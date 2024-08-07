@@ -24,9 +24,8 @@
 }
 
 .card__image {
-  width: 100%;
-  height: 282px;
   border-bottom: white;
+  object-fit: cover;
 }
 
 .card__description {

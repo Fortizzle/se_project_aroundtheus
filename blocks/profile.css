@@ -2,6 +2,7 @@
   padding-top: 41px;
   display: flex;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .profile__info {
@@ -87,6 +88,7 @@
     justify-content: center;
     max-width: 282px;
     margin: 0 auto;
+    padding-bottom: 36px;
   }
 
   .profile__image {

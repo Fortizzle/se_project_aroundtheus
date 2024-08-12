@@ -13,7 +13,7 @@
 }
 @media screen and (max-width: 660px) {
   .footer__copyright {
-    margin-right: auto;
     padding: 48px 0 36px;
+    font-size: 14px;
   }
 }

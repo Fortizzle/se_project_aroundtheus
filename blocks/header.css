@@ -23,5 +23,10 @@
   .header__logo {
     width: 126px;
     height: 24px;
+    padding-bottom: 32px;
+  }
+
+  .header {
+    margin-top: 28px;
   }
 }

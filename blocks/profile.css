@@ -75,14 +75,14 @@
   transition-duration: 1.2s;
 }
 
-@media screen and (max-width: 763px) {
+@media screen and (max-width: 765px) {
   .profile__add-button {
     width: 50px;
     height: 50px;
   }
 }
 
-@media screen and (max-width: 660px) {
+@media screen and (max-width: 665px) {
   .profile {
     flex-direction: column;
     justify-content: center;

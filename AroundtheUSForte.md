@@ -45,4 +45,4 @@ Footer Information:
 https://fortizzle.github.io/se_project_aroundtheus/git
 
 **Video Review**
-https://drive.google.com/file/d/1iv5ui42MF5kB8gmnQ8mw0tisKWbB4fQk/view?usp=drive_link
+https://drive.google.com/file/d/1vLUfvyoXnc63qTDfAvly8ikqM9IQnjMZ/view?usp=sharing

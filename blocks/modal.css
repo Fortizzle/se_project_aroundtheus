@@ -1,4 +1,5 @@
 .modal {
+  display: none;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -8,12 +9,12 @@
   padding: 0 19px;
   background-color: rgba(8, 8, 8, 0.5);
   z-index: 999;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .modal_opened {
+  display: flex;
 }
 
 .modal__container {
@@ -24,14 +25,6 @@
   height: 330px;
   padding: 36px;
   border-radius: 10px;
-}
-
-@media screen and (max-width: 665px) {
-  .modal__container {
-    width: 282px;
-    height: 322px;
-    padding: 25px 22px;
-  }
 }
 
 .modal__close {
@@ -46,16 +39,12 @@
   height: 40px;
   background-repeat: no-repeat;
   background-size: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease;
 }
 
-@media screen and (max-width: 665px) {
-  .modal__close {
-    position: absolute;
-    bottom: calc(100% + 13px);
-    left: calc(100% - 36px);
-    width: 26px;
-    height: 26px;
-  }
+.modal__close:hover {
+  opacity: 0.5;
 }
 
 .modal__heading {
@@ -64,13 +53,6 @@
   font-family: "Inter";
   font-weight: 900;
   font-size: 24px;
-}
-
-@media screen and (max-width: 665px) {
-  .modal__heading {
-    width: 238px;
-    font-size: 18px;
-  }
 }
 
 .modal__form {
@@ -95,19 +77,15 @@
   font-size: 14px;
 }
 
-@media screen and (max-width: 665px) {
-  .modal__form input[name="title"] {
-    margin: 75px 0 30px;
-  }
-}
 .modal__form input[name="description"] {
   margin: 0 0 48px;
 }
 
-@media screen and (max-width: 665px) {
-  .modal__form input[name="description"] {
-    margin: 0 0 45px;
-  }
+.modal__form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+  font-family: "Inter";
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .modal__button {
@@ -119,6 +97,48 @@
   width: 100%;
   height: 50.15px;
   border-radius: 2px;
+}
+
+@media screen and (max-width: 665px) {
+  .modal__container {
+    width: 282px;
+    height: 322px;
+    padding: 25px 22px;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .modal__close {
+    position: absolute;
+    bottom: calc(100% + 13px);
+    left: calc(100% - 36px);
+    width: 26px;
+    height: 26px;
+    opacity: 1;
+  }
+
+  .modal__close:hover {
+    opacity: 0.5;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .modal__heading {
+    width: 238px;
+    font-size: 18px;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .modal__form input[name="title"] {
+    margin: 75px 0 30px;
+  }
+}
+
+@media screen and (max-width: 665px) {
+  .modal__form input[name="description"] {
+    margin: 0 0 45px;
+  }
 }
 
 @media screen and (max-width: 665px) {

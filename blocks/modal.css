@@ -79,6 +79,10 @@
 
 .modal__form input[name="description"] {
   margin: 0 0 48px;
+  color: black;
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .modal__form input::placeholder {

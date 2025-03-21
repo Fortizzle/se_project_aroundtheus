@@ -58,6 +58,11 @@
   cursor: pointer;
 }
 
+.card__like-button.liked {
+  background: url(../images/Union.svg) center no-repeat;
+  opacity: 100%;
+}
+
 .card__like-button:hover {
   opacity: 50%;
   transition-duration: 1.2s;

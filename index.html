@@ -54,12 +54,37 @@
             type="text"
             name="description"
             id="profile-description-input"
-            class="modal__input modal__input-description"
+            class="modal__input modal__input-secondary"
             placeholder="Description"
           />
           <button class="modal__button">Save</button>
         </form>
       </div>
+    </div>
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="add-modal-close-button"></button>
+        <p class="modal__heading">New place</p>
+        <form class="modal__form" id="add-card-form">
+          
+        <input
+          type="text"
+          name="title"
+          id="card-title-input"
+          class="modal__input modal__input-title"
+          placeholder="Title"
+          required
+        />
+        <input
+          type="url"
+          name="link"
+          id="card-link-input"
+          class="modal__input modal__input-secondary"
+          placeholder="Image link"
+          required
+        />
+        <button class="modal__button">Create</button>
+      </form>
     </div>
 
     <template id="card-template">

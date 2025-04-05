@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Around The US</title>
+    <link rel="stylesheet" href="pages/index.css" />
+    <link rel="shortcut icon" href="favicon.ico" />
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          class="header__logo"
+          src="images/Logowhite.svg"
+          alt="aroundtheuslogo"
+        />
+      </header>
+      <main class="content">
+        <section class="profile page__section">
+          <img src="images/Avatar.png" alt="Avatar" class="profile__image" />
+          <div class="profile__info">
+            <h1 class="profile__title">Jacques Cousteau</h1>
+            <button
+              class="profile__edit-button"
+              id="profile-edit-button"
+              type="button"
+            ></button>
+            <p class="profile__description">Explorer</p>
+          </div>
+          <button class="profile__add-button" type="button"></button>
+        </section>
+        <section class="card page__section">
+          <ul class="card__list"></ul>
+        </section>
+      </main>
+      <footer class="footer page__section">
+        <p class="footer__copyright">© 2024 Forté Around The U.S.</p>
+      </footer>
+    </div>
+    <div class="modal" id="profile-edit-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="modal-close-button"></button>
+        <p class="modal__heading">Edit Profile</p>
+        <form class="modal__form">
+          <input
+            type="text"
+            name="title"
+            id="profile-title-input"
+            class="modal__input modal__input-title"
+            placeholder="Name"
+          />
+          <input
+            type="text"
+            name="description"
+            id="profile-description-input"
+            class="modal__input modal__input-secondary"
+            placeholder="Description"
+          />
+          <button class="modal__button">Save</button>
+        </form>
+      </div>
+    </div>
+    <div class="modal" id="add-card-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="add-modal-close-button"></button>
+        <p class="modal__heading">New place</p>
+        <form class="modal__form" id="add-card-form">
+          <input
+            type="text"
+            name="title"
+            id="card-title-input"
+            class="modal__input modal__input-title"
+            placeholder="Title"
+            required
+          />
+          <input
+            type="url"
+            name="link"
+            id="card-link-input"
+            class="modal__input modal__input-secondary"
+            placeholder="Image link"
+            required
+          />
+          <button class="modal__button">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <template id="card-template">
+      <li class="card__list-item">
+        <img class="card__image" src="" alt="" />
+        <button class="card__delete-button" type="button"></button>
+        <div class="card__description">
+          <h2 class="card__title"></h2>
+          <button class="card__like-button" type="button"></button>
+        </div>
+      </li>
+    </template>
+    <div class="modal modal--image" id="image-modal">
+      <div class="modal__container">
+        <button class="modal__close" id="image-modal-close-button"></button>
+        <div class="image-modal__content">
+          <img class="modal__image" src="" alt="Card image preview" />
+          <p class="modal--image image-modal__caption"></p>
+        </div>
+      </div>
+    </div>
+    <script src="./scripts/index.js"></script>
+  </body>
+</html>

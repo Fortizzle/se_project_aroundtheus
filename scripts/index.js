@@ -26,7 +26,7 @@ const initialCards = [
   },
 ];
 
-// Image Modal Elements
+// Image Modal Elements*
 const imageModal = document.querySelector("#image-modal");
 const imageModalImage = document.querySelector(".modal__image");
 

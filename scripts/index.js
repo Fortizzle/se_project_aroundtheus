@@ -29,6 +29,7 @@ const initialCards = [
 // Image Modal Elements*
 const imageModal = document.querySelector("#image-modal");
 const imageModalImage = document.querySelector(".modal__image");
+const imageModalCaption = document.querySelector(".modal__image-caption");
 
 console.log("imageModal:", imageModal);
 if (!imageModal) {
@@ -98,16 +99,9 @@ function getCardElement(cardData) {
 
   //* Event listeners for images*
   cardImageEl.addEventListener("click", () => {
-    const imageModal = document.querySelector("#image-modal");
-    const modalImage = imageModal.querySelector(".modal__image");
-    const caption = imageModal.querySelector(".image-modal__caption");
-
     modalImage.src = cardData.link;
     modalImage.alt = cardData.name;
-    if (caption) {
-      caption.textContent = cardData.name;
-    }
-
+    imageModalCaption.textContent = cardData.name;
     openModal(imageModal);
   });
 

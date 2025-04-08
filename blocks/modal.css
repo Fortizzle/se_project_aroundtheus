@@ -73,14 +73,14 @@
   height: auto;
 }
 
-.image-modal__content {
+.modal__image-content {
   max-width: 75vw;
   max-height: 75vh;
   margin: auto;
 }
 
 /* Override container for image modal */
-.modal--image .modal__container {
+.modal_type_image .modal__container {
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -88,11 +88,11 @@
   height: auto;
 }
 
-.modal--image .modal__close {
+.modal_type_image .modal__close {
   z-index: 2;
   background-color: transparent;
 }
-.modal--image .image-modal__caption {
+.modal_type_image .modal__image-caption {
   position: absolute;
   bottom: -30px;
   left: 0;
@@ -169,15 +169,11 @@
     height: 322px;
     padding: 25px 22px;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__input {
     padding-bottom: 7px;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__close {
     position: absolute;
     top: -40px;
@@ -190,35 +186,27 @@
     opacity: 0.5;
   }
 
-  .modal--image .modal__close {
+  .modal_type_image .modal__close {
     top: -40px;
     right: -40px;
     z-index: 2;
     background-color: transparent;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__heading {
     width: 238px;
     font-size: 18px;
     margin: 0;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__form input[name="title"] {
     margin: 75px 0 30px;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__form input[name="description"] {
     margin: 0 0 45px;
   }
-}
 
-@media screen and (max-width: 665px) {
   .modal__button {
     font-size: 14px;
   }

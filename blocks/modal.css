@@ -15,8 +15,6 @@
   opacity: 0;
   pointer-events: none;
   transition: opacity 1s ease, visibility 1s ease;
-  justify-content: center;
-  align-items: center;
 }
 
 /* When a modal is opened */

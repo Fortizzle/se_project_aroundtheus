@@ -29,17 +29,12 @@ const initialCards = [
 // Image Modal Elements*
 const imageModal = document.querySelector("#image-modal");
 const imageModalImage = document.querySelector(".modal__image");
-const imageModalCaption = document.querySelector(".modal__image-caption");
-
-console.log("imageModal:", imageModal);
-if (!imageModal) {
-  console.error("imageModal is not found! Check if it exists in the HTML.");
-}
+const imageModalCaption = document.querySelector(".modal__caption");
 
 /* Elements */
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profile-edit-modal");
-const modalCloseButton = document.querySelector("#modal-close-button");
+
 const profileTitle = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const profileTitleInput = document.querySelector("#profile-title-input");
@@ -54,7 +49,7 @@ const cardTemplate =
 /* Elements for new cards modal */
 const addCardButton = document.querySelector(".profile__add-button");
 const addCardModal = document.querySelector("#add-card-modal");
-const addModalCloseButton = document.querySelector("#add-modal-close-button");
+
 const addCardForm = document.querySelector("#add-card-form");
 const cardTitleInput = document.querySelector("#card-title-input");
 const cardLinkInput = document.querySelector("#card-link-input");
@@ -99,8 +94,8 @@ function getCardElement(cardData) {
 
   //* Event listeners for images*
   cardImageEl.addEventListener("click", () => {
-    modalImage.src = cardData.link;
-    modalImage.alt = cardData.name;
+    imageModalImage.src = cardData.link;
+    imageModalImage.alt = cardData.name;
     imageModalCaption.textContent = cardData.name;
     openModal(imageModal);
   });
@@ -119,7 +114,7 @@ function handleProfileEditSubmit(e) {
 // Load Initial Cards
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
-  console.log("Card created with listeners for:", cardData.name);
+
   cardListEl.append(cardElement);
 });
 
@@ -133,11 +128,8 @@ function handleAddCardSubmit(e) {
   const cardElement = getCardElement(cardData);
   cardListEl.prepend(cardElement);
 
-  console.log("New card added with event listener:", cardData.name);
   addCardForm.reset();
   closeModal(addCardModal);
-
-  console.log("Add Card Modal Closed");
 }
 
 /* Event Listeners */
@@ -152,7 +144,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 // Add Card Modal
 addCardButton.addEventListener("click", () => {
-  console.log("Add Card button clicked");
   openModal(addCardModal);
 });
 

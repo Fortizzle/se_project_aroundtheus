@@ -42,22 +42,33 @@
       <div class="modal__container">
         <button class="modal__close" id="modal-close-button"></button>
         <p class="modal__heading">Edit Profile</p>
-        <form class="modal__form">
+        <form class="modal__form" name="profile-edit-form">
           <input
             type="text"
             name="title"
             id="profile-title-input"
             class="modal__input modal__input-title"
             placeholder="Name"
+            minlength="2"
+            maxlength="40"
+            required
           />
+          <span class="modal__error" id="profile-title-input-error"></span>
           <input
             type="text"
             name="description"
             id="profile-description-input"
             class="modal__input modal__input-secondary"
             placeholder="Description"
+            minlength="2"
+            maxlength="200"
+            required
           />
-          <button class="modal__button">Save</button>
+          <span
+            class="modal__error"
+            id="profile-description-input-error"
+          ></span>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
@@ -73,16 +84,20 @@
             class="modal__input modal__input-title"
             placeholder="Title"
             required
+            minlength="1"
+            maxlength="30"
           />
+          <span class="modal__error" id="card-title-input-error"></span>
           <input
             type="url"
             name="link"
             id="card-link-input"
             class="modal__input modal__input-secondary"
-            placeholder="Image link"
+            placeholder="Image URL"
             required
           />
-          <button class="modal__button">Create</button>
+          <span class="modal__error" id="card-link-input-error"></span>
+          <button class="modal__button" type="submit">Create</button>
         </form>
       </div>
     </div>
@@ -106,6 +121,7 @@
         </div>
       </div>
     </div>
-    <script src="./scripts/index.js"></script>
+
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

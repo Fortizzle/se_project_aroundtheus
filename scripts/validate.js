@@ -1,20 +1,20 @@
 // Show the browser’s built-in message and flag the input
-function showError(inputElem, errorElem) {
+function showError(inputElem, errorElem, config) {
   errorElem.textContent = inputElem.validationMessage;
-  inputElem.classList.add("modal__input_type_error");
+  inputElem.classList.add(config.inputErrorClass);
 }
 
 // Clear message & styling
-function hideError(inputElem, errorElem) {
+function hideError(inputElem, errorElem, config) {
   errorElem.textContent = "";
-  inputElem.classList.remove("modal__input_type_error");
+  inputElem.classList.remove(config.inputErrorClass);
 }
 
 // Enable or disable a button on input validity
-function toggleButtonState(inputs, button) {
+function toggleButtonState(inputs, button, config) {
   const allValid = inputs.every((input) => input.validity.valid);
   button.disabled = !allValid;
-  button.classList.toggle("modal__button_disabled", !allValid);
+  button.classList.toggle(config.inactiveButtonClass, !allValid);
 }
 
 // Attach validation listeners to a single form

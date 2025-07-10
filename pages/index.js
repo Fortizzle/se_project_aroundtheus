@@ -1,9 +1,13 @@
-import {
-  showError,
-  hideError,
-  toggleButtonState,
-  enableValidation,
-} from "./validate.js";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+
+function handlePreviewImage(cardInstance) {
+  const { name, link } = cardInstance.getData();
+  imageModalImage.src = link;
+  imageModalImage.alt = name;
+  imageModalCaption.textContent = name;
+  openModal(imageModal);
+}
 
 // Description: This file contains the JavaScript code for the Around The U.S. project.
 const initialCards = [
@@ -78,6 +82,15 @@ const validationConfig = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
+// Create/ Enable form validation
+const profileFormValidator = new FormValidator(
+  validationConfig,
+  profileEditForm
+);
+const cardFormValidator = new FormValidator(validationConfig, addCardForm);
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
 
 // Utility functions
 function openModal(modal) {
@@ -96,32 +109,8 @@ function closeModal(modal) {
 
 // Card creation with event listeners
 function getCardElement(data) {
-  const card = cardTemplate.cloneNode(true);
-  const imgEl = card.querySelector(".card__image");
-  const titleEl = card.querySelector(".card__title");
-  const likeBtn = card.querySelector(".card__like-button");
-  const delBtn = card.querySelector(".card__delete-button");
-
-  imgEl.src = data.link;
-  imgEl.alt = data.name;
-  titleEl.textContent = data.name;
-
-  likeBtn.addEventListener("click", () => {
-    likeBtn.classList.toggle("card__like-button_liked");
-  });
-
-  delBtn.addEventListener("click", () => {
-    card.remove();
-  });
-
-  imgEl.addEventListener("click", () => {
-    imageModalImage.src = data.link;
-    imageModalImage.alt = data.name;
-    imageModalCaption.textContent = data.name;
-    openModal(imageModal);
-  });
-
-  return card;
+  const card = new Card(data, "#card-template", handlePreviewImage);
+  return card.generateCard();
 }
 //Close modal when clicking outside of the modal content
 document.querySelectorAll(".modal").forEach((modal) => {
@@ -143,10 +132,8 @@ function handleEscClose(evt) {
 }
 // Initialize form modal
 function initializeFormModal(
-  formElement,
+  validatorInstance,
   inputElements,
-  errorElements,
-  submitButton,
   initialValues = null
 ) {
   // If initial values are provided, set them
@@ -156,14 +143,10 @@ function initializeFormModal(
     });
   }
 
-  // Clear error states for all inputs
-  inputElements.forEach((input, index) => {
-    hideError(input, errorElements[index], validationConfig);
-  });
-
-  // Reset button state
-  toggleButtonState(inputElements, submitButton, validationConfig);
+  // Reset validation using the class instance
+  validatorInstance.resetValidation();
 }
+
 // Render card function
 function renderCard(item, method = "prepend") {
   const cardElement = getCardElement(item);
@@ -178,9 +161,6 @@ function initialize() {
     renderCard(data, "append");
   });
 
-  // Enable validation
-  enableValidation(validationConfig);
-
   // Global close button handlers
   closeButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -192,16 +172,15 @@ function initialize() {
   // Profile Edit Button click handler
   profileEditBtn.addEventListener("click", () => {
     initializeFormModal(
-      profileEditForm,
+      profileFormValidator,
       [profileTitleInput, profileDescInput],
-      [profileTitleError, profileDescError],
-      profileSubmitBtn,
-      [profileTitleEl.textContent, profileDescEl.textContent] // Add initial values here
+      [profileTitleEl.textContent, profileDescEl.textContent]
     );
+
     openModal(profileEditModal);
   });
 
-  //Profile Sumbition Validation
+  //Profile Sumbission Validation
   profileEditForm.addEventListener("submit", (e) => {
     e.preventDefault();
     profileTitleEl.textContent = profileTitleInput.value;
@@ -212,16 +191,10 @@ function initialize() {
 
   // Add Card Modal
   addCardBtn.addEventListener("click", () => {
-    initializeFormModal(
-      addCardForm,
-      [cardTitleInput, cardLinkInput],
-      [cardTitleError, cardLinkError],
-      addCardSubmitBtn
-    );
     openModal(addCardModal);
   });
 
-  //Add Card Form Sumbition Validation
+  //Add Card Form Sumbission Validation
   addCardForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const newCard = {
@@ -231,6 +204,7 @@ function initialize() {
 
     renderCard(newCard);
     addCardForm.reset(); // Reset the form
+    cardFormValidator.resetValidation();
     closeModal(addCardModal);
   });
 }

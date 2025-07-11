@@ -92,8 +92,6 @@ const enableValidation = (config) => {
   });
 };
 
-enableValidation(validationConfig);
-
 // Utility functions
 function openModal(modal) {
   modal.classList.remove("modal_closing");
@@ -109,20 +107,6 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscClose);
 }
 
-// Card creation with event listeners
-function getCardElement(data) {
-  const card = new Card(data, "#card-template", handlePreviewImage);
-  return card.generateCard();
-}
-//Close modal when clicking outside of the modal content
-document.querySelectorAll(".modal").forEach((modal) => {
-  modal.addEventListener("click", (e) => {
-    if (e.target === modal) {
-      closeModal(modal);
-    }
-  });
-});
-
 // Close modal when pressing Escape
 function handleEscClose(evt) {
   if (evt.key === "Escape") {
@@ -132,6 +116,29 @@ function handleEscClose(evt) {
     }
   }
 }
+
+//Close modal when clicking outside of the modal content
+document.querySelectorAll(".modal").forEach((modal) => {
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
+// Card creation with event listeners
+function getCardElement(data) {
+  const card = new Card(data, "#card-template", handlePreviewImage);
+  return card.generateCard();
+}
+
+// Render card function
+function renderCard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+  // Add the card into the section using the method
+  cardListEl[method](cardElement);
+}
+
 // Initialize form modal
 function initializeFormModal(
   validatorInstance,
@@ -149,15 +156,14 @@ function initializeFormModal(
   validatorInstance.resetValidation();
 }
 
-// Render card function
-function renderCard(item, method = "prepend") {
-  const cardElement = getCardElement(item);
-  // Add the card into the section using the method
-  cardListEl[method](cardElement);
-}
-
 // Initialize page
 function initialize() {
+  enableValidation(validationConfig);
+
+  // Validators accessed only after forms are ready
+  const profileFormValidator = formValidators["profile-edit-form"];
+  const cardFormValidator = formValidators["add-card-form"];
+
   // Populate initial cards
   initialCards.forEach((data) => {
     renderCard(data, "append");

@@ -80,14 +80,19 @@ const validationConfig = {
   errorClass: "modal__error_visible",
 };
 // Create/ Enable form validation
-const profileFormValidator = new FormValidator(
-  validationConfig,
-  profileEditForm
-);
-const cardFormValidator = new FormValidator(validationConfig, addCardForm);
+const formValidators = {};
 
-profileFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const formName = formElement.getAttribute("name");
+    const validator = new FormValidator(config, formElement);
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+
+enableValidation(validationConfig);
 
 // Utility functions
 function openModal(modal) {
@@ -183,7 +188,6 @@ function initialize() {
     profileTitleEl.textContent = profileTitleInput.value;
     profileDescEl.textContent = profileDescInput.value;
     closeModal(profileEditModal);
-    profileEditForm.reset(); // Reset the form
   });
 
   // Add Card Modal
@@ -207,4 +211,4 @@ function initialize() {
 }
 
 // Run initialization on DOMContentLoaded
-window.addEventListener("DOMContentLoaded", initialize);
+document.addEventListener("DOMContentLoaded", initialize);

@@ -24,7 +24,7 @@
   pointer-events: auto;
 }
 
-/* (Optional) When closing */
+/* When closing */
 .modal_closing {
   opacity: 0;
   visibility: hidden;

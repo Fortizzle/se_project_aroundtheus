@@ -94,7 +94,7 @@ const addCardModalInstance = new ModalWithForm(
   "#add-card-modal",
   (formData) => {
     renderCard({ name: formData.title, link: formData.link });
-    formValidators["add-card-form"].resetValidation();
+    addCardForm.reset();
     addCardModalInstance.close();
   }
 );
@@ -126,8 +126,6 @@ function initialize() {
 
   // Add card
   addCardBtn.addEventListener("click", () => {
-    addCardForm.reset();
-    formValidators["add-card-form"].resetValidation();
     addCardModalInstance.open();
   });
 }

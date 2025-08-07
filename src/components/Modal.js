@@ -26,15 +26,13 @@ export default class Modal {
       this.close();
     }
   }
+  // Close button
   setEventListeners() {
-    // Close button
-    this._modal
-      .querySelector(".modal__close")
-      .addEventListener("click", () => this.close());
-
-    // Click outside modal content
-    this._modal.addEventListener("click", (evt) => {
-      if (evt.target === this._modal) {
+    this._modal.addEventListener("mousedown", (evt) => {
+      if (
+        evt.target === this._modal ||
+        evt.target.classList.contains("modal__close")
+      ) {
         this.close();
       }
     });
